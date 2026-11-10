@@ -67,11 +67,17 @@ def test_broadcasting():
 
 
 def test_accepts_lists():
+    from_lists = wb.kt([0.2, 0.4], [1.0, 1.0], [0.55, 0.55], [4, 4])
+    # Lists and arrays take the same code path: identical results.
+    np.testing.assert_array_equal(
+        from_lists, wb.kt(np.array([0.2, 0.4]), np.ones(2), np.full(2, 0.55), np.full(2, 4))
+    )
+    # Scalars take another path; summation order may differ by an ulp or two.
     np.testing.assert_allclose(
-        wb.kt([0.2, 0.4], [1.0, 1.0], [0.55, 0.55], [4, 4]),
+        from_lists,
         [wb.kt(0.2, 1.0, 0.55, 4), wb.kt(0.4, 1.0, 0.55, 4)],
         rtol=0,
-        atol=1e-16,
+        atol=2e-15,
     )
 
 

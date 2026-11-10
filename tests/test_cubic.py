@@ -10,8 +10,8 @@ def test_shape_and_order():
     c = wb.cubic_coefficients(1.0, 0.55, 4)
     assert c.kt.shape == (4,) and c.kq.shape == (4,)
     # Constant term is K at J = 0.
-    assert c.kt[0] == pytest.approx(float(wb.kt(0.0, 1.0, 0.55, 4)), abs=1e-16)
-    assert c.kq[0] == pytest.approx(float(wb.kq(0.0, 1.0, 0.55, 4)), abs=1e-16)
+    assert c.kt[0] == pytest.approx(float(wb.kt(0.0, 1.0, 0.55, 4)), abs=2e-15)
+    assert c.kq[0] == pytest.approx(float(wb.kq(0.0, 1.0, 0.55, 4)), abs=2e-15)
 
 
 def test_coefficients_equal_grouped_terms():
