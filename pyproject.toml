@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wageningen-bseries"
+version = "0.1.0"
+description = "Thrust, torque and open-water efficiency of the Wageningen B-screw propeller series (Oosterveld & van Oossanen 1975 polynomials), vectorised with NumPy."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "lazgomez007" }]
+keywords = [
+    "propeller",
+    "wageningen",
+    "b-series",
+    "naval architecture",
+    "marine engineering",
+    "open water",
+    "kt kq",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = ["numpy>=1.22"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://github.com/lazgomez007/wageningen-bseries"
+Issues = "https://github.com/lazgomez007/wageningen-bseries/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["error"]
